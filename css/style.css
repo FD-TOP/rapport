@@ -1,0 +1,337 @@
+/* -----------------------------------------------------------
+   1. VARIABLES & RESET
+----------------------------------------------------------- */
+:root {
+    --black: #000000;
+    --white: #ffffff;
+    --grey-50: #fcfcfc;
+    --grey-100: #f8f9fa;
+    --grey-200: #e9ecef;
+    --grey-300: #dee2e6;
+    --grey-600: #6c757d;
+    
+    /* Couleurs Pastels Professionnelles (Désaturées) */
+    --soft-green-bg: #e9f7ef;
+    --soft-green-txt: #27ae60;
+    --soft-orange-bg: #fff5e6;
+    --soft-orange-txt: #f39c12;
+    --soft-red-bg: #fdedec;
+    --soft-red-txt: #e74c3c;
+    
+    --border-width: 1px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background-color: #f1f1f1;
+    color: var(--black);
+    line-height: 1.6;
+    padding: 40px 20px;
+}
+
+/* -----------------------------------------------------------
+   2. LAYOUT PRINCIPAL
+----------------------------------------------------------- */
+.report-wrapper {
+    max-width: 1100px;
+    margin: 0 auto;
+    background: var(--white);
+    border: var(--border-width) solid var(--black);
+    box-shadow: 0 40px 80px rgba(0,0,0,0.12);
+}
+
+header {
+    background: var(--black);
+    color: var(--white);
+    padding: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    height: 45px;
+    filter: brightness(0) invert(1); /* Assure que le logo est blanc */
+}
+
+.header-title h1 {
+    font-size: 1.15rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 0;
+}
+
+.header-title p {
+    opacity: 0.6;
+    font-size: 0.8rem;
+    margin-top: 5px;
+}
+
+.badge {
+    border: 1px solid #444;
+    padding: 6px 16px;
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* -----------------------------------------------------------
+   3. SECTION I : KPI GRID (5 COLONNES)
+----------------------------------------------------------- */
+.section-header {
+    padding: 25px 40px 10px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    background: var(--white);
+}
+
+.kpi-row {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    border-top: var(--border-width) solid var(--black);
+    border-bottom: var(--border-width) solid var(--black);
+}
+
+.kpi-card {
+    padding: 30px 20px;
+    border-right: var(--border-width) solid var(--grey-300);
+    text-align: center;
+    background: var(--white);
+    transition: background 0.3s ease;
+}
+
+.kpi-card:last-child {
+    border-right: none;
+}
+
+.kpi-label {
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: var(--grey-600);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 12px;
+}
+
+.kpi-val {
+    font-size: 1.55rem;
+    font-weight: 800;
+    display: block;
+}
+
+/* -----------------------------------------------------------
+   4. INDICATEURS & TENDANCES
+----------------------------------------------------------- */
+.trend {
+    font-size: 0.72rem;
+    font-weight: 800;
+    margin-top: 10px;
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 4px;
+}
+
+.pos { background: var(--soft-green-bg); color: var(--soft-green-txt); }
+.neg { background: var(--soft-red-bg); color: var(--soft-red-txt); }
+.neu { font-size: 0.68rem; color: #999; font-weight: 500; }
+
+.txt-green { color: var(--soft-green-txt); }
+.txt-orange { color: var(--soft-orange-txt); }
+.txt-red { color: var(--soft-red-txt); }
+
+/* -----------------------------------------------------------
+   5. ANALYSE GRID (QUALITÉ & LITIGES)
+----------------------------------------------------------- */
+.analysis-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    border-bottom: var(--border-width) solid var(--black);
+}
+
+.panel {
+    padding: 45px 40px;
+    border-right: var(--border-width) solid var(--black);
+}
+
+.panel:last-child {
+    border-right: none;
+}
+
+.panel-title {
+    font-size: 0.85rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-bottom: 35px;
+    border-left: 5px solid var(--black);
+    padding-left: 15px;
+}
+
+.q-row {
+    margin-bottom: 30px;
+}
+
+.q-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.88rem;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.progress-bar {
+    height: 6px;
+    background: var(--grey-200);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.fill {
+    height: 100%;
+    background: var(--black);
+}
+
+.fill.orange { background: var(--soft-orange-txt); }
+
+/* Litiges Cards */
+.litige-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.l-card {
+    padding: 20px 10px;
+    border: var(--border-width) solid var(--grey-300);
+    text-align: center;
+}
+
+.l-card span {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--grey-600);
+}
+
+.l-card strong {
+    display: block;
+    font-size: 1.35rem;
+    font-weight: 800;
+    margin: 8px 0;
+}
+
+.l-card small {
+    font-size: 0.68rem;
+    color: #888;
+}
+
+/* -----------------------------------------------------------
+   6. SECTION IV : INCIDENTS (COMPACT)
+----------------------------------------------------------- */
+.incident-strip {
+    background: var(--grey-100);
+    padding: 25px 40px;
+    border-bottom: var(--border-width) solid var(--black);
+}
+
+.inc-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.inc-main {
+    font-size: 0.95rem;
+    font-weight: 700;
+}
+
+.inc-list {
+    display: flex;
+    gap: 35px;
+    font-size: 0.78rem;
+    color: #444;
+    font-weight: 500;
+}
+
+/* -----------------------------------------------------------
+   7. TABLES (DAILY & CHANNELS)
+----------------------------------------------------------- */
+.table-section {
+    padding: 45px 40px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+th {
+    text-align: left;
+    padding: 15px 12px;
+    background: var(--grey-100);
+    font-size: 0.72rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    border-bottom: 2px solid var(--black);
+}
+
+td {
+    padding: 15px 12px;
+    border-bottom: var(--border-width) solid var(--grey-300);
+    font-size: 0.88rem;
+}
+
+tbody tr:hover {
+    background-color: var(--grey-50);
+}
+
+.total-row td {
+    background: var(--black);
+    color: var(--white);
+    font-weight: 800;
+    font-size: 0.95rem;
+    padding: 20px 12px;
+}
+
+.right {
+    text-align: right;
+}
+
+/* -----------------------------------------------------------
+   8. FOOTER
+----------------------------------------------------------- */
+footer {
+    padding: 35px;
+    text-align: center;
+    font-size: 0.72rem;
+    color: #999;
+    letter-spacing: 0.5px;
+    background: var(--grey-50);
+    border-top: var(--border-width) solid var(--grey-300);
+}
+
+/* Responsive (Mobile simple) */
+@media (max-width: 850px) {
+    .kpi-row, .analysis-grid, .litige-grid {
+        grid-template-columns: 1fr;
+    }
+    .kpi-card, .panel {
+        border-right: none;
+        border-bottom: var(--border-width) solid var(--grey-300);
+    }
+    .inc-flex {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+}
